@@ -1,4 +1,4 @@
-import { MessageCircle, Instagram, Phone, Heart } from 'lucide-react';
+import { MessageCircle, Instagram, Phone } from 'lucide-react';
 import MainTownLogo from './MainTownLogo';
 import { PageType } from '../types';
 
@@ -7,10 +7,10 @@ interface FooterProps {
   onJoinWaitlist: (role: 'tenant' | 'landlord' | 'agent') => void;
 }
 
-export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) {
+export default function Footer({ onNavigatePage }: FooterProps) {
   return (
     <footer id="main-footer" className="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-900 text-left">
           
@@ -24,7 +24,7 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
               <MainTownLogo variant="dark-bg" size="md" />
             </button>
 
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm font-normal">
               MainTown Realty is building trusted proptech infrastructure for renters in Nigeria and expats moving to Canada. Say goodbye to full year upfront rent and fake listings.
             </p>
 
@@ -34,9 +34,9 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
                 href="https://www.instagram.com/mitchyugan/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-900 hover:bg-purple-950 text-slate-300 hover:text-purple-300 border border-slate-800 transition-all flex items-center gap-2 text-xs font-semibold"
+                className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 transition-all flex items-center gap-2 text-xs font-medium"
               >
-                <Instagram className="w-4 h-4 text-purple-400" />
+                <Instagram className="w-4 h-4 text-primary" />
                 <span>@maintownrealty</span>
               </a>
 
@@ -45,7 +45,7 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
                 href="https://wa.me/2349061808874"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-800 transition-all flex items-center gap-2 text-xs font-semibold"
+                className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 transition-all flex items-center gap-2 text-xs font-medium"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-400" />
                 <span>WhatsApp</span>
@@ -55,15 +55,15 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
 
           {/* Sitemaps */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs font-semibold">
+            <ul className="space-y-2 text-xs font-normal">
               <li>
                 <button
                   id="footer-nav-home"
                   onClick={() => onNavigatePage('home')}
-                  className="hover:text-purple-400 transition-colors cursor-pointer"
+                  className="hover:text-primary transition-colors cursor-pointer"
                 >
                   Home
                 </button>
@@ -72,7 +72,7 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
                 <button
                   id="footer-nav-how-it-works"
                   onClick={() => onNavigatePage('how-it-works')}
-                  className="hover:text-purple-400 transition-colors cursor-pointer"
+                  className="hover:text-primary transition-colors cursor-pointer"
                 >
                   How It Works
                 </button>
@@ -81,7 +81,7 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
                 <button
                   id="footer-nav-journey"
                   onClick={() => onNavigatePage('home', 'journey')}
-                  className="hover:text-purple-400 transition-colors cursor-pointer"
+                  className="hover:text-primary transition-colors cursor-pointer"
                 >
                   The Journey
                 </button>
@@ -90,7 +90,7 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
                 <button
                   id="footer-nav-roadmap"
                   onClick={() => onNavigatePage('home', 'roadmap')}
-                  className="hover:text-purple-400 transition-colors cursor-pointer"
+                  className="hover:text-primary transition-colors cursor-pointer"
                 >
                   Roadmap & Status
                 </button>
@@ -99,7 +99,7 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
                 <button
                   id="footer-nav-waitlist"
                   onClick={() => onNavigatePage('home', 'waitlist-form')}
-                  className="hover:text-purple-400 transition-colors cursor-pointer"
+                  className="hover:text-primary transition-colors cursor-pointer"
                 >
                   Join Waitlist
                 </button>
@@ -109,12 +109,12 @@ export default function Footer({ onNavigatePage, onJoinWaitlist }: FooterProps) 
 
           {/* Contact Details */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
               Direct Contact
             </h4>
-            <div className="space-y-2.5 text-xs text-slate-300">
+            <div className="space-y-2.5 text-xs text-slate-300 font-normal">
               <p className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-purple-400 shrink-0" />
+                <Phone className="w-4 h-4 text-primary shrink-0" />
                 <a href="tel:+2349061808874" className="hover:text-white transition-colors">
                   +234 906 180 8874
                 </a>

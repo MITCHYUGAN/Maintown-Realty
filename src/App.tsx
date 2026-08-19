@@ -1,25 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProblemSection from './components/ProblemSection';
 import WhyMainTown from './components/WhyMainTown';
 import TwoJourneys from './components/TwoJourneys';
+import AISection from './components/AISection';
 import BenefitsSection from './components/BenefitsSection';
 import HowItWorks from './components/HowItWorks';
 import ProductPreview from './components/ProductPreview';
+import EarlyBuildSection from './components/EarlyBuildSection';
 import TrustSection from './components/TrustSection';
+import WhereWeAreSection from './components/WhereWeAreSection';
 import RoadmapSection from './components/RoadmapSection';
 import WaitlistSection from './components/WaitlistSection';
 import HowItWorksPage from './components/HowItWorksPage';
 import Footer from './components/Footer';
-import WaitlistModal from './components/WaitlistModal';
 import { PageType } from './types';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  const [modalRole, setModalRole] = useState<'tenant' | 'landlord' | 'agent'>('tenant');
-  const [modalMarket, setModalMarket] = useState<'Nigeria' | 'Canada' | 'Both'>('Nigeria');
+  const [waitlistRole, setWaitlistRole] = useState<'tenant' | 'landlord' | 'agent'>('tenant');
+  const [waitlistMarket, setWaitlistMarket] = useState<'Nigeria' | 'Canada' | 'Both'>('Nigeria');
 
   // Handle URL Hash or smooth scroll
   const handleNavigate = (page: PageType, anchor?: string) => {
@@ -36,22 +37,27 @@ export default function App() {
     }
   };
 
-  const openWaitlistModal = (role: 'tenant' | 'landlord' | 'agent' = 'tenant', market: 'Nigeria' | 'Canada' = 'Nigeria') => {
-    setModalRole(role);
-    setModalMarket(market);
-    setIsWaitlistOpen(true);
-  };
+  const scrollToInlineWaitlist = (role: 'tenant' | 'landlord' | 'agent' = 'tenant', market: 'Nigeria' | 'Canada' = 'Nigeria') => {
+    setWaitlistRole(role);
+    setWaitlistMarket(market);
 
-  const scrollToInlineWaitlist = () => {
     if (currentPage !== 'home') {
       setCurrentPage('home');
       setTimeout(() => {
         const elem = document.getElementById('waitlist-form');
-        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+        if (elem) {
+          elem.scrollIntoView({ behavior: 'smooth' });
+          const input = document.getElementById('inline-input-name');
+          if (input) input.focus();
+        }
       }, 150);
     } else {
       const elem = document.getElementById('waitlist-form');
-      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth' });
+        const input = document.getElementById('inline-input-name');
+        if (input) input.focus();
+      }
     }
   };
 
@@ -61,7 +67,7 @@ export default function App() {
       <Header
         currentPage={currentPage}
         onNavigate={handleNavigate}
-        onJoinWaitlist={(role) => openWaitlistModal(role)}
+        onJoinWaitlist={(role) => scrollToInlineWaitlist(role)}
       />
 
       {/* Main Pages Router */}
@@ -70,27 +76,30 @@ export default function App() {
           <>
             {/* 1. Hero Section */}
             <Hero
-              onJoinWaitlist={(role) => openWaitlistModal(role)}
-              onScrollToWaitlist={scrollToInlineWaitlist}
+              onJoinWaitlist={(role) => scrollToInlineWaitlist(role)}
+              onScrollToWaitlist={() => scrollToInlineWaitlist('tenant')}
             />
 
             {/* 2. Problem Section */}
             <ProblemSection />
 
-            {/* 3. Who We Are Section */}
+            {/* 3. Stakeholder Benefits Section (Designed for the Entire Ecosystem) */}
+            <BenefitsSection
+              onJoinWaitlist={(role) => scrollToInlineWaitlist(role)}
+            />
+
+            {/* 4. Who We Are Section (Our Core Mission) */}
             <WhyMainTown />
 
-            {/* 4. Two Markets Section */}
+            {/* 5. Two Markets Section */}
             <TwoJourneys
-              onJoinWaitlist={(role, market) => openWaitlistModal(role, market)}
+              onJoinWaitlist={(role, market) => scrollToInlineWaitlist(role, market)}
             />
 
-            {/* 5. Stakeholder Benefits Section */}
-            <BenefitsSection
-              onJoinWaitlist={(role) => openWaitlistModal(role)}
-            />
+            {/* 6. AI Verification Section (Powered by AI) */}
+            <AISection />
 
-            {/* 6. The Journey Section (Winding Pathway Graphic) */}
+            {/* 7. The Journey Section (Winding Pathway Graphic) */}
             <HowItWorks
               onNavigateHowItWorks={(page) => handleNavigate(page)}
             />
@@ -98,20 +107,29 @@ export default function App() {
             {/* 7. Product Preview Walkthrough */}
             <ProductPreview />
 
-            {/* 8. Trust & Verification Section */}
+            {/* 8. Early Build Section */}
+            <EarlyBuildSection />
+
+            {/* 9. Trust & Verification Section */}
             <TrustSection />
 
-            {/* 9. Development Status & Roadmap Section + Teaser */}
+            {/* 10. Where We Are Today Section */}
+            <WhereWeAreSection />
+
+            {/* 11. Development Status & Roadmap Section + Teaser */}
             <RoadmapSection />
 
             {/* 10. Priority Waitlist Form */}
-            <WaitlistSection />
+            <WaitlistSection
+              selectedRole={waitlistRole}
+              selectedMarket={waitlistMarket}
+            />
           </>
         ) : (
           /* Page 2: How It Works Page */
           <HowItWorksPage
             onNavigateHome={(anchor) => handleNavigate('home', anchor)}
-            onJoinWaitlist={(role) => openWaitlistModal(role)}
+            onJoinWaitlist={(role) => scrollToInlineWaitlist(role)}
           />
         )}
       </main>
@@ -119,15 +137,7 @@ export default function App() {
       {/* Footer */}
       <Footer
         onNavigatePage={handleNavigate}
-        onJoinWaitlist={(role) => openWaitlistModal(role)}
-      />
-
-      {/* Global Priority Waitlist Modal */}
-      <WaitlistModal
-        isOpen={isWaitlistOpen}
-        onClose={() => setIsWaitlistOpen(false)}
-        defaultRole={modalRole}
-        defaultMarket={modalMarket}
+        onJoinWaitlist={(role) => scrollToInlineWaitlist(role)}
       />
     </div>
   );

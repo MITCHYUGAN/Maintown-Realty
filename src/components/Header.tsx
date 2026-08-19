@@ -47,12 +47,12 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
             <button
               id="nav-link-home"
               onClick={() => handleNavClick('home')}
               className={`hover:text-purple-600 transition-colors cursor-pointer ${
-                currentPage === 'home' ? 'text-purple-600 font-bold' : ''
+                currentPage === 'home' ? 'text-purple-600 font-semibold' : ''
               }`}
             >
               Home
@@ -61,7 +61,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
               id="nav-link-how-it-works"
               onClick={() => handleNavClick('how-it-works')}
               className={`hover:text-purple-600 transition-colors cursor-pointer ${
-                currentPage === 'how-it-works' ? 'text-purple-600 font-bold' : ''
+                currentPage === 'how-it-works' ? 'text-purple-600 font-semibold' : ''
               }`}
             >
               How It Works
@@ -85,7 +85,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
               href="https://wa.me/2349061808874"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 transition-colors"
+              className="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 transition-colors font-medium"
             >
               <MessageCircle className="w-4 h-4 fill-emerald-50 text-emerald-600" />
               <span>WhatsApp Us</span>
@@ -97,17 +97,17 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
             <button
               id="header-landlord-btn"
               onClick={() => onJoinWaitlist('landlord')}
-              className="text-xs font-bold text-slate-700 hover:text-purple-600 px-4 py-2.5 rounded-xl border border-slate-200 hover:border-purple-200 hover:bg-purple-50/40 transition-all cursor-pointer"
+              className="text-xs font-medium text-foreground bg-secondary/80 hover:bg-secondary px-5 py-2.5 rounded-xl transition-all cursor-pointer border border-border"
             >
               I'm a Landlord or Agent
             </button>
             <button
               id="header-tenant-btn"
               onClick={() => onJoinWaitlist('tenant')}
-              className="flex items-center gap-1.5 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-xs font-bold text-white rounded-xl shadow-md shadow-purple-100 hover:shadow-purple-200 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2.5 bg-primary hover:bg-primary/90 text-xs font-medium text-primary-foreground rounded-xl shadow-xs transition-all cursor-pointer"
             >
-              Join the Waitlist
-              <ChevronRight className="w-4 h-4" />
+              <span>Join the Waitlist</span>
+              <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -127,7 +127,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-2xl py-6 px-5 space-y-4 flex flex-col">
-          <nav className="flex flex-col gap-3 font-semibold text-slate-800 text-base">
+          <nav className="flex flex-col gap-3 font-medium text-slate-800 text-base">
             <button
               id="mobile-nav-home"
               onClick={() => handleNavClick('home')}
@@ -161,7 +161,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
               href="https://wa.me/2349061808874"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 py-2 text-emerald-600 font-bold"
+              className="flex items-center gap-2 py-2 text-emerald-600 font-medium"
             >
               <MessageCircle className="w-5 h-5 fill-emerald-50" />
               Chat on WhatsApp (+234 906 180 8874)
@@ -175,7 +175,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
                 setMobileMenuOpen(false);
                 onJoinWaitlist('landlord');
               }}
-              className="w-full text-center py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
+              className="w-full text-center py-3 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 cursor-pointer"
             >
               I'm a Landlord or Agent
             </button>
@@ -185,7 +185,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
                 setMobileMenuOpen(false);
                 onJoinWaitlist('tenant');
               }}
-              className="w-full text-center py-3 rounded-xl bg-purple-600 text-white text-sm font-bold hover:bg-purple-700 shadow-md shadow-purple-100 cursor-pointer"
+              className="w-full text-center py-3 rounded-xl bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 shadow-md shadow-purple-100 cursor-pointer"
             >
               Join the Waitlist
             </button>
