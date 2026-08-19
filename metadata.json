@@ -1,0 +1,6 @@
+{
+  "name": "MainTown Realty",
+  "description": "Premium landing page for MainTown Realty, a Nigerian PropTech startup helping tenants pay rent monthly instead of upfront yearly.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
