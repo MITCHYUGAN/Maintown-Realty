@@ -1,35 +1,26 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Search, Calendar, Landmark, MapPin, CheckCircle, Star, Bell } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Search, Calendar, Landmark, MapPin, CheckCircle, Star, Bell } from "lucide-react";
 
 export default function ProductPreview() {
-  const [activeTab, setActiveTab] = useState<'search' | 'schedule' | 'dashboard'>('search');
+  const [activeTab, setActiveTab] = useState<"search" | "schedule" | "dashboard">("search");
 
   const tabs = [
-    { id: 'search', label: 'Property', icon: <Search className="w-4 h-4" /> },
-    { id: 'schedule', label: 'Rent', icon: <Calendar className="w-4 h-4" /> },
-    { id: 'dashboard', label: 'Dashboard', icon: <Landmark className="w-4 h-4" /> },
+    { id: "search", label: "Property", icon: <Search className="w-4 h-4" /> },
+    { id: "schedule", label: "Rent", icon: <Calendar className="w-4 h-4" /> },
+    { id: "dashboard", label: "Dashboard", icon: <Landmark className="w-4 h-4" /> },
   ];
 
   return (
     <section id="preview" className="py-24 bg-white relative overflow-hidden border-t border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 relative">
-        
         {/* Header with Title and Clear Badge */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="flex items-center justify-center gap-2.5 flex-wrap">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-              PRODUCT WALKTHROUGH
-            </span>
-            <span className="text-slate-300 font-normal">•</span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-              CONCEPT PREVIEW · NOT YET BUILT
-            </span>
-          </div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">PRODUCT WALKTHROUGH</span>
+          <br />
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-primary underline">CONCEPT PREVIEW · NOT YET BUILT</span>
 
-          <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-tight">
-            See the MainTown Experience
-          </h2>
+          <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-tight pt-4">See the MainTown Experience</h2>
           <p className="text-muted-foreground text-base sm:text-lg font-normal leading-relaxed">
             A premium, high-speed proptech workspace tailored for Nigerian housing. Switch tabs to explore different panels of our client dashboard.
           </p>
@@ -37,30 +28,21 @@ export default function ProductPreview() {
 
         {/* Interactive Layout: Tabs Left, Phone Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
           {/* Left Column: Interactive Tab Descriptions */}
           <div className="lg:col-span-5 space-y-4 text-left">
-            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-2">
-              TOGGLE APPLICATION PANELS
-            </span>
+            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-2">TOGGLE APPLICATION PANELS</span>
 
             <div className="space-y-3">
               {/* Property Search Description */}
               <button
                 id="preview-tab-search"
-                onClick={() => setActiveTab('search')}
+                onClick={() => setActiveTab("search")}
                 className={`w-full text-left p-5 rounded-2xl transition-all cursor-pointer ${
-                  activeTab === 'search'
-                    ? 'bg-white border-2 border-primary shadow-sm'
-                    : 'bg-transparent border border-transparent hover:bg-slate-50'
+                  activeTab === "search" ? "bg-white border-2 border-primary shadow-sm" : "bg-transparent border border-transparent hover:bg-slate-50"
                 }`}
               >
                 <div className="flex gap-4 items-start">
-                  <div className={`p-3 rounded-xl border shrink-0 ${
-                    activeTab === 'search'
-                      ? 'bg-purple-50 border-purple-100 text-primary'
-                      : 'bg-slate-100 border-slate-200/60 text-slate-500'
-                  }`}>
+                  <div className={`p-3 rounded-xl border shrink-0 ${activeTab === "search" ? "bg-purple-50 border-purple-100 text-primary" : "bg-slate-100 border-slate-200/60 text-slate-500"}`}>
                     <Search className="w-5 h-5" />
                   </div>
                   <div>
@@ -75,19 +57,13 @@ export default function ProductPreview() {
               {/* Rent Schedule Description */}
               <button
                 id="preview-tab-schedule"
-                onClick={() => setActiveTab('schedule')}
+                onClick={() => setActiveTab("schedule")}
                 className={`w-full text-left p-5 rounded-2xl transition-all cursor-pointer ${
-                  activeTab === 'schedule'
-                    ? 'bg-white border-2 border-primary shadow-sm'
-                    : 'bg-transparent border border-transparent hover:bg-slate-50'
+                  activeTab === "schedule" ? "bg-white border-2 border-primary shadow-sm" : "bg-transparent border border-transparent hover:bg-slate-50"
                 }`}
               >
                 <div className="flex gap-4 items-start">
-                  <div className={`p-3 rounded-xl border shrink-0 ${
-                    activeTab === 'schedule'
-                      ? 'bg-purple-50 border-purple-100 text-primary'
-                      : 'bg-slate-100 border-slate-200/60 text-slate-500'
-                  }`}>
+                  <div className={`p-3 rounded-xl border shrink-0 ${activeTab === "schedule" ? "bg-purple-50 border-purple-100 text-primary" : "bg-slate-100 border-slate-200/60 text-slate-500"}`}>
                     <Calendar className="w-5 h-5" />
                   </div>
                   <div>
@@ -102,19 +78,13 @@ export default function ProductPreview() {
               {/* Dashboard Description */}
               <button
                 id="preview-tab-dashboard"
-                onClick={() => setActiveTab('dashboard')}
+                onClick={() => setActiveTab("dashboard")}
                 className={`w-full text-left p-5 rounded-2xl transition-all cursor-pointer ${
-                  activeTab === 'dashboard'
-                    ? 'bg-white border-2 border-primary shadow-sm'
-                    : 'bg-transparent border border-transparent hover:bg-slate-50'
+                  activeTab === "dashboard" ? "bg-white border-2 border-primary shadow-sm" : "bg-transparent border border-transparent hover:bg-slate-50"
                 }`}
               >
                 <div className="flex gap-4 items-start">
-                  <div className={`p-3 rounded-xl border shrink-0 ${
-                    activeTab === 'dashboard'
-                      ? 'bg-purple-50 border-purple-100 text-primary'
-                      : 'bg-slate-100 border-slate-200/60 text-slate-500'
-                  }`}>
+                  <div className={`p-3 rounded-xl border shrink-0 ${activeTab === "dashboard" ? "bg-purple-50 border-purple-100 text-primary" : "bg-slate-100 border-slate-200/60 text-slate-500"}`}>
                     <Landmark className="w-5 h-5" />
                   </div>
                   <div>
@@ -131,7 +101,6 @@ export default function ProductPreview() {
           {/* Right Column: Premium Smartphone Container */}
           <div className="lg:col-span-7 flex justify-center">
             <div className="relative w-[340px] h-[680px] bg-slate-950 rounded-[44px] p-3.5 shadow-2xl shadow-slate-950/20 border-4 border-slate-800 ring-1 ring-slate-900">
-              
               {/* Dynamic Island Speaker */}
               <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-xl z-20 flex items-center justify-between px-3">
                 <div className="w-3.5 h-3.5 bg-zinc-900 rounded-full border border-zinc-800" />
@@ -141,7 +110,6 @@ export default function ProductPreview() {
 
               {/* Phone Internal Screen */}
               <div className="w-full h-full bg-slate-50 rounded-[32px] overflow-hidden relative flex flex-col pt-9 pb-4 text-left select-none">
-                
                 {/* Internal App Navigation Header */}
                 <div className="px-5 py-3 border-b border-slate-100 bg-white flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
@@ -159,14 +127,8 @@ export default function ProductPreview() {
                 {/* Main App Content Area */}
                 <div className="flex-1 overflow-y-auto no-scrollbar p-4 space-y-4">
                   <AnimatePresence mode="wait">
-                    {activeTab === 'search' && (
-                      <motion.div
-                        key="search-screen"
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -10 }}
-                        className="space-y-4"
-                      >
+                    {activeTab === "search" && (
+                      <motion.div key="search-screen" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-4">
                         <div className="flex gap-2 p-1.5 rounded-lg bg-white border border-slate-100 shadow-xs">
                           <Search className="w-4 h-4 text-slate-400 shrink-0 mt-1 ml-1" />
                           <input type="text" readOnly placeholder="Search Lekki, Yaba, Ikeja..." className="bg-transparent border-none outline-none text-xs text-slate-800 w-full" />
@@ -174,7 +136,7 @@ export default function ProductPreview() {
 
                         <div className="space-y-3">
                           <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider font-mono">VERIFIED HOMES</p>
-                          
+
                           <div className="bg-white border border-slate-100 rounded-xl overflow-hidden shadow-xs">
                             <div className="h-28 bg-purple-50 relative overflow-hidden flex items-center justify-center">
                               <div className="text-center p-4">
@@ -186,9 +148,14 @@ export default function ProductPreview() {
                             <div className="p-3 space-y-1.5">
                               <div className="flex justify-between items-center">
                                 <span className="text-xs font-semibold text-slate-800">Lekki Haven Court</span>
-                                <div className="flex items-center gap-0.5 text-xs text-amber-500 font-mono"><Star className="w-3 h-3 fill-amber-500" />4.9</div>
+                                <div className="flex items-center gap-0.5 text-xs text-amber-500 font-mono">
+                                  <Star className="w-3 h-3 fill-amber-500" />
+                                  4.9
+                                </div>
                               </div>
-                              <p className="text-[10px] text-slate-400 flex items-center gap-0.5"><MapPin className="w-3 h-3" /> Lekki Phase 1, Lagos</p>
+                              <p className="text-[10px] text-slate-400 flex items-center gap-0.5">
+                                <MapPin className="w-3 h-3" /> Lekki Phase 1, Lagos
+                              </p>
                               <div className="flex justify-between items-center pt-2 border-t border-slate-50">
                                 <span className="text-[10px] text-slate-400 font-mono">₦2.4M / yr upfront</span>
                                 <span className="text-xs font-semibold text-primary bg-purple-50 px-2 py-0.5 rounded-md font-mono">₦200,000/mo</span>
@@ -199,14 +166,8 @@ export default function ProductPreview() {
                       </motion.div>
                     )}
 
-                    {activeTab === 'schedule' && (
-                      <motion.div
-                        key="schedule-screen"
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -10 }}
-                        className="space-y-4"
-                      >
+                    {activeTab === "schedule" && (
+                      <motion.div key="schedule-screen" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-4">
                         <div className="p-4 bg-white border border-slate-100 rounded-xl space-y-3 shadow-xs">
                           <p className="text-xs font-semibold text-slate-800">12-Month Rent Schedule</p>
                           <p className="text-[10px] text-slate-400">Paid regularly to build credit</p>
@@ -240,14 +201,8 @@ export default function ProductPreview() {
                       </motion.div>
                     )}
 
-                    {activeTab === 'dashboard' && (
-                      <motion.div
-                        key="dashboard-screen"
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -10 }}
-                        className="space-y-4"
-                      >
+                    {activeTab === "dashboard" && (
+                      <motion.div key="dashboard-screen" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-4">
                         <div className="grid grid-cols-2 gap-2.5">
                           <div className="p-3 bg-white border border-slate-100 rounded-lg shadow-2xs">
                             <p className="text-[9px] text-slate-400 font-medium uppercase font-mono">Total Payouts</p>
@@ -281,20 +236,16 @@ export default function ProductPreview() {
                       key={tab.id}
                       id={`mock-btn-${tab.id}`}
                       onClick={() => setActiveTab(tab.id as any)}
-                      className={`flex flex-col items-center gap-0.5 cursor-pointer ${
-                        activeTab === tab.id ? 'text-primary font-semibold' : 'hover:text-slate-700'
-                      }`}
+                      className={`flex flex-col items-center gap-0.5 cursor-pointer ${activeTab === tab.id ? "text-primary font-semibold" : "hover:text-slate-700"}`}
                     >
                       {tab.icon}
                       <span className="text-[9px] font-semibold tracking-tight">{tab.label}</span>
                     </button>
                   ))}
                 </div>
-
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

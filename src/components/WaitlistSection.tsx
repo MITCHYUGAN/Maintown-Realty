@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Check, Copy, Lock, ChevronRight, MessageCircle } from 'lucide-react';
-import { WaitlistSubmission } from '../types';
+import React, { useState, useEffect } from "react";
+import { motion } from "motion/react";
+import { Check, Copy, Lock, ChevronRight, MessageCircle } from "lucide-react";
+import { WaitlistSubmission } from "../types";
 
 interface WaitlistSectionProps {
-  selectedRole?: 'tenant' | 'landlord' | 'agent';
-  selectedMarket?: 'Nigeria' | 'Canada' | 'Both';
+  selectedRole?: "tenant" | "landlord" | "agent";
+  selectedMarket?: "Nigeria" | "Canada" | "Both";
 }
 
-export default function WaitlistSection({ selectedRole = 'tenant', selectedMarket = 'Nigeria' }: WaitlistSectionProps) {
-  const [role, setRole] = useState<'tenant' | 'landlord' | 'agent'>(selectedRole);
-  const [market, setMarket] = useState<'Nigeria' | 'Canada' | 'Both'>(selectedMarket);
-  const [name, setName] = useState('');
-  const [contact, setContact] = useState('');
+export default function WaitlistSection({ selectedRole = "tenant", selectedMarket = "Nigeria" }: WaitlistSectionProps) {
+  const [role, setRole] = useState<"tenant" | "landlord" | "agent">(selectedRole);
+  const [market, setMarket] = useState<"Nigeria" | "Canada" | "Both">(selectedMarket);
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
 
   useEffect(() => {
     if (selectedRole) setRole(selectedRole);
@@ -21,7 +21,7 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
   useEffect(() => {
     if (selectedMarket) setMarket(selectedMarket);
   }, [selectedMarket]);
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submission, setSubmission] = useState<WaitlistSubmission | null>(null);
   const [copied, setCopied] = useState(false);
@@ -42,7 +42,7 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
         queuePosition: 1,
       };
 
-      localStorage.setItem('maintown_waitlist_joined', JSON.stringify(newSubmission));
+      localStorage.setItem("maintown_waitlist_joined", JSON.stringify(newSubmission));
       setSubmission(newSubmission);
       setIsSubmitting(false);
     }, 800);
@@ -50,7 +50,7 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
 
   const copyReferral = () => {
     if (!submission) return;
-    const refLink = `${window.location.origin}?ref=${encodeURIComponent(submission.name.toLowerCase().replace(/\s+/g, '-'))}`;
+    const refLink = `${window.location.origin}?ref=${encodeURIComponent(submission.name.toLowerCase().replace(/\s+/g, "-"))}`;
     navigator.clipboard.writeText(refLink);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -58,44 +58,30 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
 
   const handleShareWhatsApp = () => {
     if (!submission) return;
-    const refLink = `${window.location.origin}?ref=${encodeURIComponent(submission.name.toLowerCase().replace(/\s+/g, '-'))}`;
-    const text = encodeURIComponent(
-      `I just joined the early access waitlist for MainTown Realty! They are building verified rental housing for Nigeria & Canada. Check it out: ${refLink}`
-    );
-    window.open(`https://wa.me/?text=${text}`, '_blank');
+    const refLink = `${window.location.origin}?ref=${encodeURIComponent(submission.name.toLowerCase().replace(/\s+/g, "-"))}`;
+    const text = encodeURIComponent(`I just joined the early access waitlist for MainTown Realty! They are building verified rental housing for Nigeria & Canada. Check it out: ${refLink}`);
+    window.open(`https://wa.me/?text=${text}`, "_blank");
   };
 
   return (
     <section id="waitlist-form" className="py-20 md:py-28 bg-white border-t border-border relative">
       <div className="max-w-3xl mx-auto px-6 md:px-12 lg:px-20 relative">
-        
         {/* Container Box */}
         <div className="bg-white p-8 sm:p-12 md:p-14 rounded-3xl border border-slate-200/90 shadow-xs relative overflow-hidden text-left">
-          
           {!submission ? (
             <div>
               {/* Header */}
               <div className="text-center max-w-xl mx-auto mb-10 space-y-3">
-                <div className="inline-flex items-center">
-                  <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-purple-50 text-primary border border-purple-100 text-[11px] font-semibold uppercase tracking-wider">
-                    EARLY ACCESS
-                  </span>
-                </div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-primary">EARLY ACCESS</p>
 
-                <h2 className="font-sans text-3xl sm:text-4xl lg:text-[42px] font-semibold text-slate-900 tracking-tight leading-[1.18]">
-                  Be First In Line
-                </h2>
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-                  Join the early access list and we'll reach out on WhatsApp the moment listings go live in your area.
-                </p>
+                <h2 className="font-sans text-3xl sm:text-4xl lg:text-[42px] font-semibold text-slate-900 tracking-tight leading-[1.18]">Be First In Line</h2>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">Join the early access list and we'll reach out on WhatsApp the moment listings go live in your area.</p>
               </div>
 
               {/* Form */}
               <form id="inline-waitlist-form" onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">
-                    Full Name
-                  </label>
+                  <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">Full Name</label>
                   <input
                     id="inline-input-name"
                     type="text"
@@ -108,9 +94,7 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">
-                    WhatsApp Number or Email
-                  </label>
+                  <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">WhatsApp Number or Email</label>
                   <input
                     id="inline-input-contact"
                     type="text"
@@ -124,9 +108,7 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">
-                      I am a...
-                    </label>
+                    <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">I am a...</label>
                     <select
                       id="inline-select-role"
                       value={role}
@@ -140,9 +122,7 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">
-                      Which Market?
-                    </label>
+                    <label className="block text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">Which Market?</label>
                     <select
                       id="inline-select-market"
                       value={market}
@@ -154,11 +134,6 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
                       <option value="Both">Both Markets</option>
                     </select>
                   </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-slate-500 pt-1">
-                  <Lock className="w-4 h-4 text-primary shrink-0" />
-                  <span>No spam ever. Direct onboarding notification via WhatsApp.</span>
                 </div>
 
                 <button
@@ -180,19 +155,13 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
             </div>
           ) : (
             /* Success State */
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-4 space-y-6"
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-4 space-y-6">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
                 <Check className="w-8 h-8 text-emerald-700" />
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-sans text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
-                  You're on the list, {submission.name.split(' ')[0]}!
-                </h3>
+                <h3 className="font-sans text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">You're on the list, {submission.name.split(" ")[0]}!</h3>
                 <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-normal">
                   We'll message you on WhatsApp the moment listings are verified in your target neighborhood.
                 </p>
@@ -205,9 +174,15 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
                   <span className="text-emerald-400 font-semibold">Confirmed</span>
                 </div>
                 <div className="pt-2 border-t border-slate-800 text-xs text-slate-300 space-y-1.5 font-normal">
-                  <p>Target Market: <span className="font-semibold text-white">{submission.market}</span></p>
-                  <p>Account Type: <span className="font-semibold text-white capitalize">{submission.role}</span></p>
-                  <p>Contact: <span className="font-mono text-slate-200">{submission.contact}</span></p>
+                  <p>
+                    Target Market: <span className="font-semibold text-white">{submission.market}</span>
+                  </p>
+                  <p>
+                    Account Type: <span className="font-semibold text-white capitalize">{submission.role}</span>
+                  </p>
+                  <p>
+                    Contact: <span className="font-mono text-slate-200">{submission.contact}</span>
+                  </p>
                 </div>
               </div>
 
@@ -241,9 +216,7 @@ export default function WaitlistSection({ selectedRole = 'tenant', selectedMarke
               </div>
             </motion.div>
           )}
-
         </div>
-
       </div>
     </section>
   );

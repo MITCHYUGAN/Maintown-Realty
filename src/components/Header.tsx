@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, MessageCircle } from 'lucide-react';
-import MainTownLogo from './MainTownLogo';
-import { PageType } from '../types';
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronRight, MessageCircle } from "lucide-react";
+import MainTownLogo from "./MainTownLogo";
+import { PageType } from "../types";
 
 interface HeaderProps {
   currentPage: PageType;
   onNavigate: (page: PageType, anchor?: string) => void;
-  onJoinWaitlist: (role: 'tenant' | 'landlord' | 'agent') => void;
+  onJoinWaitlist: (role: "tenant" | "landlord" | "agent") => void;
 }
 
 export default function Header({ currentPage, onNavigate, onJoinWaitlist }: HeaderProps) {
@@ -17,8 +17,8 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 12);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (page: PageType, anchor?: string) => {
@@ -29,20 +29,13 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
   return (
     <header
       id="main-header"
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 py-3.5 shadow-sm'
-          : 'bg-white/80 backdrop-blur-sm py-5 border-b border-transparent'
+      className={`w-full flex item-center justify-center fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        isScrolled ? "bg-white/95 backdrop-blur-md border-b border-slate-100 py-3.5 shadow-sm" : "bg-white/80 backdrop-blur-sm py-5 border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:px-0">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <button
-            id="nav-brand-logo"
-            onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2 group text-left cursor-pointer focus:outline-none"
-          >
+          <button id="nav-brand-logo" onClick={() => handleNavClick("home")} className="flex items-center gap-2 group text-left cursor-pointer focus:outline-none">
             <MainTownLogo variant="light-bg" size="md" />
           </button>
 
@@ -50,36 +43,28 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
           <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
             <button
               id="nav-link-home"
-              onClick={() => handleNavClick('home')}
-              className={`hover:text-purple-600 transition-colors cursor-pointer ${
-                currentPage === 'home' ? 'text-purple-600 font-semibold' : ''
-              }`}
+              onClick={() => handleNavClick("home")}
+              className={`hover:text-purple-600 transition-colors cursor-pointer ${currentPage === "home" ? "text-purple-600 font-semibold" : ""}`}
             >
               Home
             </button>
             <button
               id="nav-link-how-it-works"
-              onClick={() => handleNavClick('how-it-works')}
-              className={`hover:text-purple-600 transition-colors cursor-pointer ${
-                currentPage === 'how-it-works' ? 'text-purple-600 font-semibold' : ''
-              }`}
+              onClick={() => handleNavClick("how-it-works")}
+              className={`hover:text-purple-600 transition-colors cursor-pointer ${currentPage === "how-it-works" ? "text-purple-600 font-semibold" : ""}`}
             >
               How It Works
             </button>
-            <button
-              id="nav-link-journey"
-              onClick={() => handleNavClick('home', 'journey')}
-              className="hover:text-purple-600 transition-colors cursor-pointer"
-            >
+            <button id="nav-link-journey" onClick={() => handleNavClick("home", "journey")} className="hover:text-purple-600 transition-colors cursor-pointer">
               The Journey
             </button>
-            <button
-              id="nav-link-roadmap"
-              onClick={() => handleNavClick('home', 'roadmap')}
-              className="hover:text-purple-600 transition-colors cursor-pointer"
-            >
+            <button id="nav-link-roadmap" onClick={() => handleNavClick("home", "roadmap")} className="hover:text-purple-600 transition-colors cursor-pointer">
               Roadmap
             </button>
+          </nav>
+
+          {/* Desktop Call to Actions */}
+          <div className="hidden lg:flex items-center gap-3">
             <a
               id="nav-link-whatsapp"
               href="https://wa.me/2349061808874"
@@ -87,23 +72,14 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 transition-colors font-medium"
             >
-              <MessageCircle className="w-4 h-4 fill-emerald-50 text-emerald-600" />
-              <span>WhatsApp Us</span>
+              <button className="flex gap-2 text-xs font-medium text-foreground bg-secondary/80 hover:bg-secondary px-5 py-2.5 rounded-xl transition-all cursor-pointer border border-border">
+                <span>Contact Us</span>
+                <MessageCircle className="w-4 h-4 fill-emerald-50 text-emerald-600" />
+              </button>
             </a>
-          </nav>
-
-          {/* Desktop Call to Actions */}
-          <div className="hidden lg:flex items-center gap-3">
-            <button
-              id="header-landlord-btn"
-              onClick={() => onJoinWaitlist('landlord')}
-              className="text-xs font-medium text-foreground bg-secondary/80 hover:bg-secondary px-5 py-2.5 rounded-xl transition-all cursor-pointer border border-border"
-            >
-              I'm a Landlord or Agent
-            </button>
             <button
               id="header-tenant-btn"
-              onClick={() => onJoinWaitlist('tenant')}
+              onClick={() => onJoinWaitlist("tenant")}
               className="flex items-center gap-1.5 px-5 py-2.5 bg-primary hover:bg-primary/90 text-xs font-medium text-primary-foreground rounded-xl shadow-xs transition-all cursor-pointer"
             >
               <span>Join the Waitlist</span>
@@ -128,41 +104,19 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-2xl py-6 px-5 space-y-4 flex flex-col">
           <nav className="flex flex-col gap-3 font-medium text-slate-800 text-base">
-            <button
-              id="mobile-nav-home"
-              onClick={() => handleNavClick('home')}
-              className="text-left py-2 border-b border-slate-100 hover:text-purple-600"
-            >
+            <button id="mobile-nav-home" onClick={() => handleNavClick("home")} className="text-left py-2 border-b border-slate-100 hover:text-purple-600">
               Home
             </button>
-            <button
-              id="mobile-nav-how-it-works"
-              onClick={() => handleNavClick('how-it-works')}
-              className="text-left py-2 border-b border-slate-100 hover:text-purple-600"
-            >
+            <button id="mobile-nav-how-it-works" onClick={() => handleNavClick("how-it-works")} className="text-left py-2 border-b border-slate-100 hover:text-purple-600">
               How It Works
             </button>
-            <button
-              id="mobile-nav-journey"
-              onClick={() => handleNavClick('home', 'journey')}
-              className="text-left py-2 border-b border-slate-100 hover:text-purple-600"
-            >
+            <button id="mobile-nav-journey" onClick={() => handleNavClick("home", "journey")} className="text-left py-2 border-b border-slate-100 hover:text-purple-600">
               The Journey
             </button>
-            <button
-              id="mobile-nav-roadmap"
-              onClick={() => handleNavClick('home', 'roadmap')}
-              className="text-left py-2 border-b border-slate-100 hover:text-purple-600"
-            >
+            <button id="mobile-nav-roadmap" onClick={() => handleNavClick("home", "roadmap")} className="text-left py-2 border-b border-slate-100 hover:text-purple-600">
               Roadmap
             </button>
-            <a
-              id="mobile-nav-whatsapp"
-              href="https://wa.me/2349061808874"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 py-2 text-emerald-600 font-medium"
-            >
+            <a id="mobile-nav-whatsapp" href="https://wa.me/2349061808874" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 py-2 text-emerald-600 font-medium">
               <MessageCircle className="w-5 h-5 fill-emerald-50" />
               Chat on WhatsApp (+234 906 180 8874)
             </a>
@@ -173,7 +127,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
               id="mobile-join-landlord-btn"
               onClick={() => {
                 setMobileMenuOpen(false);
-                onJoinWaitlist('landlord');
+                onJoinWaitlist("landlord");
               }}
               className="w-full text-center py-3 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 cursor-pointer"
             >
@@ -183,7 +137,7 @@ export default function Header({ currentPage, onNavigate, onJoinWaitlist }: Head
               id="mobile-join-tenant-btn"
               onClick={() => {
                 setMobileMenuOpen(false);
-                onJoinWaitlist('tenant');
+                onJoinWaitlist("tenant");
               }}
               className="w-full text-center py-3 rounded-xl bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 shadow-md shadow-purple-100 cursor-pointer"
             >
