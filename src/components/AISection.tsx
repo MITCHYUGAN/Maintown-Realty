@@ -12,11 +12,11 @@ export default function AISection() {
           </p>
 
           <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight leading-tight">
-            The Real Problem Isn't Just Rent — It's Trust
+            The Real Problem Isn't <br /> Just Rent — It's Trust
           </h2>
 
           <p className="text-slate-800 text-base sm:text-lg font-medium leading-relaxed">
-            Fake listings. Fake documents. Fake landlords. MainTown is building AI into the core of how we solve this.
+            Fake listings. Fake documents. Fake landlords. <br />MainTown is building AI into the core of how we solve this.
           </p>
 
           <p className="text-slate-600 text-sm sm:text-[15px] leading-relaxed font-normal pt-1">

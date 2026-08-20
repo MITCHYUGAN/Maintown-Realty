@@ -166,9 +166,6 @@ export default function Hero({ onJoinWaitlist, onScrollToWaitlist }: HeroProps) 
           
           {/* Left — Copy */}
           <div className="text-left">
-            <div className="flex items-center gap-2 mb-6">
-              <MainTownLogo variant="light-bg" size="sm" />
-            </div>
             <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-4">
               REAL ESTATE, VERIFIED
             </p>
@@ -206,9 +203,7 @@ export default function Hero({ onJoinWaitlist, onScrollToWaitlist }: HeroProps) 
                 src={heroHomeImg}
                 alt="Modern luxury multi-level residential architectural design"
                 referrerPolicy="no-referrer"
-                className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.14)]"
-                width={1280}
-                height={1080}
+                className="w-full h-auto object-contain"
               />
             </div>
 

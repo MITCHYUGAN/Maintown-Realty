@@ -1,21 +1,21 @@
-import MainTownLogo from './MainTownLogo';
+import MainTownLogo from "./MainTownLogo";
 
 export default function WhereWeAreSection() {
   const stats = [
     {
-      value: 'Lagos',
+      value: "Lagos",
       label: "Where we're starting",
     },
     {
-      value: '3',
-      label: 'Neighborhoods live at launch',
+      value: "3",
+      label: "Neighborhoods live at launch",
     },
     {
-      value: '100%',
-      label: 'Listings checked before going live',
+      value: "100%",
+      label: "Listings checked before going live",
     },
     {
-      value: '2',
+      value: "2",
       label: "Markets we're building for: Nigeria & Canada",
     },
   ];
@@ -23,20 +23,16 @@ export default function WhereWeAreSection() {
   return (
     <section id="where-we-are" className="py-20 md:py-28 bg-white border-t border-border relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-          
           {/* Left Column: Heading & 2x2 Metric Stats */}
           <div className="lg:col-span-6 space-y-9 text-left">
             <div className="space-y-4">
-              <div>
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-purple-50 text-primary border border-purple-100 text-[11px] font-semibold uppercase tracking-wider">
-                  WHERE WE ARE TODAY
-                </span>
-              </div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-primary">WHERE WE ARE TODAY</p>
 
               <h2 className="font-sans text-3xl sm:text-4xl lg:text-[44px] font-semibold text-slate-900 tracking-tight leading-[1.18]">
-                Starting in Lagos,<br />building for two markets.
+                Starting in Lagos,
+                <br />
+                building for two markets.
               </h2>
             </div>
 
@@ -44,12 +40,8 @@ export default function WhereWeAreSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7 pt-2">
               {stats.map((stat, idx) => (
                 <div key={idx} id={`metric-${stat.value}`} className="space-y-1">
-                  <div className="text-3xl sm:text-4xl font-bold font-sans text-primary tracking-tight">
-                    {stat.value}
-                  </div>
-                  <p className="text-slate-600 text-sm leading-snug font-normal">
-                    {stat.label}
-                  </p>
+                  <div className="text-3xl sm:text-4xl font-bold font-sans text-primary tracking-tight">{stat.value}</div>
+                  <p className="text-slate-600 text-sm leading-snug font-normal">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -58,7 +50,6 @@ export default function WhereWeAreSection() {
           {/* Right Column: Founder / Team Statement Card */}
           <div className="lg:col-span-6">
             <div className="bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-11 shadow-xs relative flex flex-col justify-between">
-              
               {/* Quote Mark & Content with Left Accent Line */}
               <div className="flex gap-6 items-start">
                 {/* Purple Accent Left Bar */}
@@ -74,29 +65,23 @@ export default function WhereWeAreSection() {
 
                   {/* Body Statement */}
                   <blockquote className="text-slate-800 text-base sm:text-lg leading-relaxed font-normal">
-                    “MainTown Realty is built by a team with real, hands-on experience in the Nigerian real estate market, under SmartyHub Group. We're building this carefully, in the open, with AI at the center of how we verify trust.”
+                    “MainTown Realty is built by a team with real, hands-on experience in the Nigerian real estate market, under SmartyHub Group. We're building this carefully, in the open, with AI at
+                    the center of how we verify trust.”
                   </blockquote>
 
                   {/* Author / Organization Attribution */}
                   <div className="pt-5 border-t border-slate-100 flex items-center gap-3.5">
                     <MainTownLogo variant="light-bg" size="sm" />
                     <div>
-                      <div className="font-sans text-sm font-semibold text-slate-900">
-                        The MainTown Realty Team
-                      </div>
-                      <div className="text-xs text-slate-500 font-normal">
-                        Part of SmartyHub Group
-                      </div>
+                      <div className="font-sans text-sm font-semibold text-slate-900">The MainTown Realty Team</div>
+                      <div className="text-xs text-slate-500 font-normal">Part of SmartyHub Group</div>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );
